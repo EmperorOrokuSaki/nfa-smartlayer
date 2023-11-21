@@ -4,12 +4,13 @@ import "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "./NonBlockingLzApp.sol";
 import "./FleekPausable.sol";
+import "./interfaces/IERC5169.sol";
 
 /// @title The Fleek Prints contract is responsible for the Print NFT collection and the NFA -> ENS data registry.
 /// @author Nima Rasooli (EmperorOrokuSaki / Nima-Ra)
 /// @notice All Print NFTs are updated, registered, and managed in this contract.
 /// @dev This contract uses LayerZero to enable cross-messaging.
-contract FleekPrints is NonblockingLzApp, ERC721Upgradeable, FleekPausable {
+contract FleekPrints is IERC5169, NonblockingLzApp, ERC721Upgradeable, FleekPausable {
     using Strings for uint160;
 
     struct NFA {
@@ -39,6 +40,8 @@ contract FleekPrints is NonblockingLzApp, ERC721Upgradeable, FleekPausable {
     bool public isMain; // is only set to `true` on the ethereum main-net Print contract
 
     string constant CHANGE_MAIN_ALERT = "NewMainAddress";
+
+    string[] private _scriptURI;
 
     ////////////
     // MODIFIERS
@@ -208,6 +211,17 @@ contract FleekPrints is NonblockingLzApp, ERC721Upgradeable, FleekPausable {
             mainChainID = _newChainId;
             authorizedSource = _newMain;
         }
+    }
+
+    // ERC-5169
+    function scriptURI() external view override returns(string[] memory) {
+        return _scriptURI;
+    }
+
+    function setScriptURI(string[] memory newScriptURI) external onlyFromAuthorizedSources(msg.sender) override {
+        _scriptURI = newScriptURI;
+
+        emit ScriptUpdate(newScriptURI);
     }
 
     receive() external payable {}
