@@ -1,0 +1,14 @@
+{
+  "buildId": "521075a6d40e07bf890a10c5efad9455",
+  "timestamp": "11/21/2023, 3:47:04 PM",
+  "address": "0x81aF68659282c960241A42136e2956f0FB932FA2",
+  "transactionHash": "0x1d669c98e38aaad91fe04767f53817bf14a6973bcdad8ac2105a1a1d7473a784",
+  "gasPrice": 10867607193,
+  "abi": [],
+  "bytecode": "0x60808060405234601757604d9081601e823930815050f35b50600080fdfe6080604052600080fdfea36469706673582212201c9ba39b6d6f405f705a33cba9368c38bf5caccc87e2c010f324b483fccc97d76c6578706572696d656e74616cf564736f6c634300080c0041",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.12+commit.f00d7308\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/util/ExcessivelySafeCall.sol\":\"ExcessivelySafeCall\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"contracts/util/ExcessivelySafeCall.sol\":{\"keccak256\":\"0x8355680ee3db8c855f77a0cb141eedb68e0894ddb2b7ffafdf78303f6dac23e0\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://eee702c5dd8e63af824261c5757050019cab0901246ec1b6034f87601703a387\",\"dweb:/ipfs/QmRyteW31v4L5oi6u8bxEpksKkkkFZh6mAXbcF1yv7RbUi\"]}},\"version\":1}",
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

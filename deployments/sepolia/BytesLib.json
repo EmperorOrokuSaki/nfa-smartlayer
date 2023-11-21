@@ -1,0 +1,14 @@
+{
+  "buildId": "521075a6d40e07bf890a10c5efad9455",
+  "timestamp": "11/21/2023, 3:46:49 PM",
+  "address": "0xA3bDC39f071E411B4F3b25E339f4912a5580C8a4",
+  "transactionHash": "0x3be9c84b573bcc00d9f1611be1df3afd1a73c4fbda2a9f1382f804c0bd6b7758",
+  "gasPrice": 11375862772,
+  "abi": [],
+  "bytecode": "0x60808060405234601757604d9081601e823930815050f35b50600080fdfe6080604052600080fdfea364697066735822122075776d0a01c56ab632cfbe4bf5dee08f2ad4df7188273b1401d0d593da5732836c6578706572696d656e74616cf564736f6c634300080c0041",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.12+commit.f00d7308\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/util/BytesLib.sol\":\"BytesLib\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"contracts/util/BytesLib.sol\":{\"keccak256\":\"0xaa1c57864bd8483bb17f2fa96a0cbebb39006ca7aab1a28ff85e52e487437c4c\",\"license\":\"Unlicense\",\"urls\":[\"bzz-raw://9bfcc8f417fb668a949b02addebf6ed5ad60f1be20af66db69d803796c55cc21\",\"dweb:/ipfs/QmYy5UzAs8TGXjYAJ83Nnyf3mDpiSoFbqG468qQ9uHH7eD\"]}},\"version\":1}",
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

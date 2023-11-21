@@ -9,8 +9,7 @@ import '@openzeppelin/hardhat-upgrades';
 import * as dotenv from 'dotenv';
 import { HardhatUserConfig } from 'hardhat/types';
 import { task, types } from 'hardhat/config';
-import deployFleekERC721 from './scripts/deploy/deploy-fleek-erc721';
-import deployFleekApps from './scripts/deploy/deploy-fleek-apps';
+import deployFleekPrints from './scripts/deploy/deploy-fleek-prints';
 
 dotenv.config();
 
@@ -109,22 +108,17 @@ const config: HardhatUserConfig = {
 
 export default config;
 
-// Use the following command to deploy where the network flag can be replaced with the network you choose:
+// Use the following command to deploy where the ne`twork flag can be replaced with the network you choose:
 // npx hardhat deploy --network goerli --new-proxy-instance --name "FleekNFAs" --symbol "FLKNFA" --billing "[10000, 20000]"
-task('deploy:FleekERC721', 'Deploy the FleekERC721 contract')
+task('deploy:FleekPrints', 'Deploy the FleekPrints contract')
   .addFlag('newProxyInstance', 'Force to deploy a new proxy instance')
-  .addOptionalParam('name', 'The collection name', 'Fleek NFAs', types.string)
-  .addOptionalParam('symbol', 'The collection symbol', 'FLKNFA', types.string)
+  .addOptionalParam('isMain', 'Is it the main contract', true, types.boolean)
+  .addOptionalParam('mainChainId', 'Main chain id', 161, types.int)
   .addOptionalParam(
-    'billing',
-    'The billing values in an array of numbers like "[10000, 20000]"',
-    [],
-    types.json
+    'authorizedSource',
+    'The only authorized source of the contract',
+    "0xd4997d0FaCC83231b9F26a8B2155b4869E99946F",
+    types.string
   )
-  .setAction(deployFleekERC721);
-
-task('deploy:FleekApps', 'Deploy the FleekApps contract')
-  .addFlag('newProxyInstance', 'Force to deploy a new proxy instance')
-  .addOptionalParam('name', 'The collection name', 'NFA - Apps', types.string)
-  .addOptionalParam('symbol', 'The collection symbol', 'NFAA', types.string)
-  .setAction(deployFleekApps);
+  .addOptionalParam('lzEndpoint', 'LayerZero endpoint on chain', "0x7cacBe439EaD55fa1c22790330b12835c6884a91", types.string)
+  .setAction(deployFleekPrints);
