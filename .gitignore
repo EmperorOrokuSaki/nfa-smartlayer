@@ -1,0 +1,16 @@
+# hardhat
+cache
+artifacts
+deployments/hardhat
+deployments/local
+gas-report
+
+# Foundry
+out
+forge-cache
+
+node_modules
+assets
+
+# OpenZeppelin
+.openzeppelin/unknown-*.json
