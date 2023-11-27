@@ -1,3 +1,5 @@
+pragma solidity ^0.8.12;
+
 interface IERC5169 {
     /// @dev This event emits when the scriptURI is updated, 
     /// so wallets implementing this interface can update a cached script

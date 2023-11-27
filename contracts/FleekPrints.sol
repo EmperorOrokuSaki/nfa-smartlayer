@@ -1,16 +1,17 @@
 pragma solidity ^0.8.12;
 
-import "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol";
+//import "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol";
+//import "@openzeppelin/contracts/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "./NonBlockingLzApp.sol";
-import "./FleekPausable.sol";
 import "./interfaces/IERC5169.sol";
 
 /// @title The Fleek Prints contract is responsible for the Print NFT collection and the NFA -> ENS data registry.
 /// @author Nima Rasooli (EmperorOrokuSaki / Nima-Ra)
 /// @notice All Print NFTs are updated, registered, and managed in this contract.
 /// @dev This contract uses LayerZero to enable cross-messaging.
-contract FleekPrints is IERC5169, NonblockingLzApp, ERC721Upgradeable, FleekPausable {
+contract FleekPrints is IERC5169, NonblockingLzApp, ERC721 {
     using Strings for uint160;
 
     struct NFA {
@@ -63,7 +64,7 @@ contract FleekPrints is IERC5169, NonblockingLzApp, ERC721Upgradeable, FleekPaus
         uint16 _mainChainId,
         address _authorizedSource,
         address _lzEndpoint
-    ) NonblockingLzApp(_lzEndpoint) {
+    ) NonblockingLzApp(_lzEndpoint) ERC721("NFA PRINTS", "PRNT") {
         isMain = _isMain;
         mainChainID = _mainChainId;
         authorizedSource = _authorizedSource;
@@ -71,8 +72,6 @@ contract FleekPrints is IERC5169, NonblockingLzApp, ERC721Upgradeable, FleekPaus
         if (!isMain) {
             setTrustedRemote(mainChainID, abi.encodePacked(_authorizedSource, address(this))); // add the main contract address to trusted remotes
         }
-
-        __ERC721_init("NFA Prints", "PRNT");
     }
 
     ///////////////////////////
@@ -80,15 +79,15 @@ contract FleekPrints is IERC5169, NonblockingLzApp, ERC721Upgradeable, FleekPaus
     ///////////////////////////
 
     // Mints a print for an nfa
-    function mint(uint256 _nfaId) external returns (uint256) {
+    function mint(address to, uint256 _nfaId) external returns (uint256) {
         require(nfaMetadata[_nfaId].ENSId > 0, "The passed nfa id is non-existent.");
 
         uint256 tokenId = printId;
         tokenId++;
 
-        _safeMint(msg.sender, tokenId); // msg.sender should always be an EOA, it will revert for contracts.
+        _safeMint(to, tokenId); // msg.sender should always be an EOA, it will revert for contracts.
 
-        printMetadata[tokenId] = Token(_nfaId, msg.sender);
+        printMetadata[tokenId] = Token(_nfaId, to);
         printId = tokenId;
         return tokenId;
     }
