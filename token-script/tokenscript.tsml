@@ -1,0 +1,95 @@
+<ts:token xmlns:ethereum="urn:ethereum:constantinople" xmlns:ts="http://tokenscript.org/2022/09/tokenscript" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="FleekPrints" xsi:schemaLocation="http://tokenscript.org/2022/09/tokenscript http://tokenscript.org/2022/09/tokenscript.xsd">
+	
+	<ts:label>
+		<ts:plurals xml:lang="en">
+			<ts:string quantity="one">Fleek Prints Token</ts:string>
+			<ts:string quantity="other">Fleek Prints Tokens</ts:string>
+		</ts:plurals>
+	</ts:label>
+	
+	<ts:meta>
+		<ts:description xml:lang="en">Fleek Prints from Fleek NFAs</ts:description>
+		<ts:aboutUrl xml:lang="en">https://sepolia.etherscan.io/address/0x9e4A318C788e0097A24146Fe7041a0CD93939D56</ts:aboutUrl>
+		<ts:iconUrl xml:lang="en">https://fleek.xyz/_next/static/media/fleek-logo.d81494ff.svg</ts:iconUrl>
+	</ts:meta>
+	
+	<ts:contract interface="erc721" name="Token">
+		<ts:address network="11155111">0x9e4A318C788e0097A24146Fe7041a0CD93939D56</ts:address>
+	</ts:contract>
+	
+	<ts:origins>
+		
+		<ts:ethereum contract="Token"/>
+	</ts:origins>
+	
+	<ts:cards>
+
+		<ts:viewContent xmlns="http://www.w3.org/1999/xhtml" name="common">
+		</ts:viewContent>
+
+		<ts:card name="Info" type="token">
+			<ts:label>
+				<ts:string xml:lang="en">Open safe version</ts:string>
+			</ts:label>
+			<ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+				<ts:viewContent xmlns:ts="http://tokenscript.org/2022/09/tokenscript" name="common"/>
+				
+				
+				
+			<style>
+					/* <![CDATA[ */
+					
+* {
+	font-family: "Rubik", sans-serif;
+	box-sizing: border-box;
+}
+
+body {
+	color: #0B0B0B;
+}
+
+h1 {
+	font-size: 22px;
+}
+
+h2 {
+	font-size: 20px;
+}
+
+h3 {
+	font-size: 18px;
+}
+
+h5 {
+	font-size: 16px;
+	margin-bottom: 12px;
+}
+
+p.light {
+	color: #545454;
+}
+
+.loader-modal {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+					/* ]]> */
+				</style>class Token {
+
+    constructor(tokenInstance) {
+        this.props = tokenInstance
+        console.log(tokenInstance.chainId);
+    }
+
+    render() {
+        return `
+        <iframe src="https://gateway.ipfs.io/ipfs/bafybeibwirqleiponhf7v76j7uwl2ffpw7tjebmbyhxbfkw3etj5a6okjm" width="680" height="1000" allowfullscreen=""></iframe></ts:view>
+		</ts:card>
+
+	</ts:cards>
+
+</ts:token>
