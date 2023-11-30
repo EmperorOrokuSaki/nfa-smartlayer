@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<ts:token xmlns:ts="http://tokenscript.org/2022/09/tokenscript"
+		  xmlns:xml="http://www.w3.org/XML/1998/namespace"
+		  xsi:schemaLocation="http://tokenscript.org/2022/09/tokenscript http://tokenscript.org/2022/09/tokenscript.xsd"
+		  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		  xmlns:ethereum="urn:ethereum:constantinople"
+		  name="FleekPrints">
+	
+	<ts:label>
+		<ts:plurals xml:lang="en">
+			<ts:string quantity="one">Fleek Prints Token</ts:string>
+			<ts:string quantity="other">Fleek Prints Tokens</ts:string>
+		</ts:plurals>
+	</ts:label>
+	
+	<ts:meta>
+		<ts:description xml:lang="en">Fleek Prints from Fleek NFAs</ts:description>
+		<ts:aboutUrl xml:lang="en">https://sepolia.etherscan.io/address/0x9e4A318C788e0097A24146Fe7041a0CD93939D56</ts:aboutUrl>
+		<ts:iconUrl xml:lang="en">https://fleek.xyz/_next/static/media/fleek-logo.d81494ff.svg</ts:iconUrl>
+	</ts:meta>
+	
+	<ts:contract interface="erc721" name="Token">
+		<ts:address network="11155111">0x9e4A318C788e0097A24146Fe7041a0CD93939D56</ts:address>
+	</ts:contract>
+	
+	<ts:origins>
+		<!-- Define the contract which holds the token that the user will use -->
+		<ts:ethereum contract="Token"/>
+	</ts:origins>
+	
+	<ts:cards>
+
+		<ts:viewContent name="common" xmlns="http://www.w3.org/1999/xhtml">
+		</ts:viewContent>
+
+		<ts:card type="token" name="Info">
+			<ts:label>
+				<ts:string xml:lang="en">Open safe version</ts:string>
+			</ts:label>
+			<ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+				<ts:viewContent name="common"/>
+				<ts:include type="css" src="./styles.css"/>
+				<ts:include type="html" src="./safe.en.js"/>
+				<!-- <ts:include type="html" src="./index.html"/> -->
+			</ts:view>
+		</ts:card>
+
+		<ts:card type="action" name="Mint">
+			<ts:label>
+				<ts:string xml:lang="en">Mint</ts:string>
+			</ts:label>
+			<ts:transaction>
+				<ethereum:transaction contract="Token" function="safeMint">
+					<ts:data>
+					</ts:data>
+				</ethereum:transaction>
+			</ts:transaction>
+			<ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+				<ts:viewContent name="common"/>
+				<ts:include type="html" src="./mint.html"/>
+			</ts:view>
+		</ts:card>
+
+	</ts:cards>
+
+</ts:token>
